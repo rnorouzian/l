@@ -2,7 +2,6 @@ alt.hyp = function(N, d){
   
 options(warn = -1) ; d = sort(d)
 df = N - 1  ;  d.SE = 1/sqrt(N)  ;  ncp.min = min(d)*sqrt(N)  ;  ncp.max = max(d)*sqrt(N)
-  
 min.d = d.SE*qt(1e-5, df, ncp.min)  ;  max.d = d.SE*qt(0.99999, df, ncp.max)  
   
 for(i in 1:length(d)){      
