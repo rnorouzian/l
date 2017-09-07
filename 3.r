@@ -247,6 +247,4 @@ par(xaxt = "s") ; if(researcher.tool) axis(1, at = min(y):max(y), font = 2) else
     }
 }
 # Example of use:
-ttest(n1 = 30, n2 = 30, sim.time = .7, min.score = 0, max.score = 20, 
-      simulation = FALSE, n.sim = 1, paired = FALSE,
-      researcher.tool = TRUE, effect.size = 0)
+ttest(n1 = 30, n2 = 30, min.score = 0, max.score = 20, researcher.tool = TRUE, effect.size = 0)
