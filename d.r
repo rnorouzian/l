@@ -7,10 +7,11 @@ t.value = D$t.value ; n1 = D$n1 ; n2 = D$n2 ; t.type = D$t.type ; p.value = D$p.
 ## Pre-analysis: 
 pre_analysis = function(){
 list(Data.size = Data.size,
-paired.samples = sum(t.type == 0),
+paired.samples = sum(t.type == 0)-3,
+one.sample = 3,
 independent.samples = sum(t.type == 1),
 sig.pvalues = unname(table(p.value <= .05)["TRUE"]),
-non.sig.pvalues = unname(table(p.value <= .05)["FALSE"]))
+non.sig.pvalues = unname(table(p.value <= .05)["FALSE"])) 
 }
 
 ## Main Analysis:
