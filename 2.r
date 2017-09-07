@@ -10,7 +10,7 @@ H = curve(dt(x*sqrt(N), df, d[i]*sqrt(N))*sqrt(N), min.d, max.d, n = 1e3, xlab =
           ylab = NA, ty = "n", add = i!= 1, bty = "n", yaxt = "n", font = 2, font.lab = 2)
       
 polygon(H, col = adjustcolor(i, .7), border = NA)
-text(d[i], max(H$y), bquote(bolditalic(H[.(i-1)])), pos = 3, xpd = TRUE)
+text(d[i], max(H$y), bquote(bolditalic(H[.(i-1)])), pos = 3, xpd = NA)
 axis(1, at = d[i], col = i, col.axis = i)
 segments(d[i], 0, d[i], max(H$y), lty = 3)
    }
