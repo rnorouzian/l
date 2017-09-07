@@ -4,18 +4,14 @@ source("https://raw.githubusercontent.com/izeh/l/master/f.r")
 
 t.value = D$t.value ; n1 = D$n1 ; n2 = D$n2 ; t.type = D$t.type ; p.value = D$p.value ; Data.size = nrow(D)
 
-
 ## Pre-analysis: 
 pre_analysis = function(){
-
 list(Data.size = Data.size,
 paired.samples = sum(t.type == 0),
 independent.samples = sum(t.type == 1),
 sig.pvalues = unname(table(p.value <= .05)["TRUE"]),
 non.sig.pvalues = unname(table(p.value <= .05)["FALSE"]))
-  
 }
-
 
 ## Main Analysis:
 b = BF.d.pvalue(t = t.value, n1 = n1, n2 = n2)
@@ -28,8 +24,6 @@ pval.bf = data.frame(p = p.value, BF = BF)
 d.bf = data.frame(BF = BF, d = d)  
 pval.d = data.frame(p = p.value, d = d)
 
-
-
 ## all p.values distribution
 p.dist = function(){
   
@@ -39,7 +33,6 @@ rect(0, 0, .05, max(h$counts), col = rgb(0, 0, 1, .4), border = 2)
 axis(1, at = .05, lab = ".05", col = 2, col.axis = 2, font = 2)
 axis(2, at = c(seq(0, 2e2, l = 5), max(h$counts)))
   }
-
 
 ## Significant p.values distribution
 p.sig.dist = function(){
@@ -52,7 +45,6 @@ axis(1, at = .005, lab = ".005", col = 2, col.axis = 2, font = 2)
 axis(2, at = c(seq(0, 100, l = 3), max(h$counts)))
   
 cat("Percentage of sig. p to all ps = ", length(sig.p)/length(all.data$p)*1e2, "%", "\n\tSig Ps that remain sig after .005 =",(nrow(subset(all.data, p < .05))-nrow(subset(all.data, p < .005)) )/nrow(subset(all.data, p < .05))*1e2,'%')
-
  } 
 
 ### Ready the subsets:
@@ -153,7 +145,6 @@ gap.y = sort(c(mid.y[-length(mid.y)] + diff(mid.y)[1L] / 2, grconvertY(0:1, "nic
 xlim = c( grconvertX(0, "nic"), grconvertX(1, "nic") )
 ylim = c( grconvertY(0, "nic"), grconvertY(1, "nic") )
 
-
 arrows(rep(gap.x[1]-.57, 2), c(mid.y[3], mid.y[2]), rep(gap.x[1]-.57, 2), c(mid.y[4], mid.y[1]), code = 2, length = .075, angle = 20)
 
 text(rep(gap.x[1]-.62, 2),  c(gap.y[2], gap.y[4]), c(expression(bolditalic("Support for H"[0])), expression(bolditalic("Support for H"[1]))), srt = 90, pos = 3)
@@ -164,12 +155,10 @@ l = paste0(names(v), "\n", decimal(v, 2), "%")
 
 mtext(l, side = 4, at = mid.y, las = 1, line = .2, cex = .7, font = 2)
 
-
 v = c(Decisive= p.Decisive, Substantial= p.substan, Positive= p.positive, None= p.no)/Data.size*1e2
 l = paste0(names(v), "\n", decimal(v, 2), "%")
 
 text(mid.x, ylim[2] + .05, l, cex = 1.1, font = 2)
-
 
 l = c('0', '.001', '.01', '.05', '1') 
 mtext(l, side = 1, at = gap.x, line = .55, cex = .9, font = 2)
@@ -188,10 +177,6 @@ text(mean(gap.x), ylim[2] + .16, bquote(bold("Evidence against"~bolditalic(H)[0]
 tt = subset(pval.bf, (p > .01 & p <= .05))
 
 list(chisq.table = chisq.table, X.sq = X.sq, "p.values(.01-.05)_BFs(Anecdotal[H1]):" = 
-paste0(round(length(which(tt$BF <= 3 & tt$BF >= 1)) / nrow(tt)*1e2, 2), "%"), "p.values(.01-.05)_BFs(Anecdotal[H0]):" = paste0(round(length(which(tt$BF >= 1/3 & tt$BF <= 1)) / nrow(tt)*1e2, 2), "%")
-)
+paste0(round(length(which(tt$BF <= 3 & tt$BF >= 1)) / nrow(tt)*1e2, 2), "%"), "p.values(.01-.05)_BFs(Anecdotal[H0]):" = 
+paste0(round(length(which(tt$BF >= 1/3 & tt$BF <= 1)) / nrow(tt)*1e2, 2), "%"))
 }
-
-
-p.value_BF()
-
