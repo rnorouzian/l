@@ -26,7 +26,6 @@ pval.d = data.frame(p = p.value, d = d)
 
 ## all p.values distribution
 p.dist = function(){
-  
 par(mgp = c(2.5, .6, 0), las = 1)  
 h = hist(all.data$p, breaks = 15, xlab = bquote(bolditalic("p")*bold("-value")), font.lab = 2, main = NA, yaxt = "n", mgp = c(2.5, .6, 0))
 rect(0, 0, .05, max(h$counts), col = rgb(0, 0, 1, .4), border = 2)
@@ -36,7 +35,6 @@ axis(2, at = c(seq(0, 2e2, l = 5), max(h$counts)))
 
 ## Significant p.values distribution
 p.sig.dist = function(){
-
 par(mgp = c(2.5, .75, 0), las = 1)      
 sig.p = unname(unlist(subset(all.data, p <= .05)[1]))
 h = hist(sig.p, xlab = bquote(bolditalic("p")*bold("-value")), font.lab = 2, main = NA, yaxt = "n", mgp = c(2.5, .6, 0))
@@ -49,7 +47,6 @@ cat("Percentage of sig. p to all ps = ", length(sig.p)/length(all.data$p)*1e2, "
 
 ### Ready the subsets:
 p.value_BF = function(){
-  
 ## Subsetting for a 7x4 plot p.value against BF:
 p.b7.4 = subset(pval.bf, (BF > .1 & BF <= 1/3) & (p > .05)) 
 p.b6.4 = subset(pval.bf, (BF > 1/3 & BF <= 1) & (p > .05))
