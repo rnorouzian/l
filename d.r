@@ -26,6 +26,8 @@ pval.d = data.frame(p = p.value, d = d)
 
 ## all p.values distribution
 p.dist = function(){
+original_par = par(no.readonly = TRUE)
+on.exit(par(original_par))  
 par(mgp = c(2.5, .6, 0), las = 1)  
 h = hist(all.data$p, breaks = 15, xlab = bquote(bolditalic("p")*bold("-value")), font.lab = 2, main = NA, yaxt = "n", mgp = c(2.5, .6, 0))
 rect(0, 0, .05, max(h$counts), col = rgb(0, 0, 1, .4), border = 2)
@@ -35,6 +37,8 @@ axis(2, at = c(seq(0, 2e2, l = 5), max(h$counts)))
 
 ## Significant p.values distribution
 p.sig.dist = function(){
+original_par = par(no.readonly = TRUE)
+on.exit(par(original_par))  
 par(mgp = c(2.5, .75, 0), las = 1)      
 sig.p = unname(unlist(subset(all.data, p <= .05)[1]))
 h = hist(sig.p, xlab = bquote(bolditalic("p")*bold("-value")), font.lab = 2, main = NA, yaxt = "n", mgp = c(2.5, .6, 0))
