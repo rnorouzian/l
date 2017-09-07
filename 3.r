@@ -37,8 +37,7 @@ ttest = function(n1 = 5, n2 = 5,
       
       beta = qnorm(c(1e-10, .9999999999))
          q = c(min.score, max.score)
-      
-      
+           
   mu.sigma = solve(cbind(1L, beta), q)
       
       mean = mu.sigma[[1]]
@@ -55,8 +54,7 @@ ttest = function(n1 = 5, n2 = 5,
       
     TRUE.d = (mean.g1 - mean.g2) / sd
     }
-    
-    
+     
     if(n1 < 2L) { n1 = 2L } ; if(n2 < 2L) { n2 = 2L }
     
     if(!paired & !researcher.tool){  
@@ -67,8 +65,7 @@ ttest = function(n1 = 5, n2 = 5,
     if(paired & !researcher.tool){
       
       cor.pop = correlation # true correlation between normal pops.
-      
-      
+       
       mu <- c(0, 0)
       cov.pop <- matrix(c(1, cor.pop, cor.pop, 1), nrow = 2)
       
@@ -96,8 +93,7 @@ ttest = function(n1 = 5, n2 = 5,
      sd2 = sqrt(m2*(1-p2))
   TRUE.d = (m1-m2) / sqrt((((n1 - 1)*((sd1^2))) + (n2 - 1)*((sd2^2)))/((n1+n2)-2))
     }
-    
-    
+       
     if(researcher.tool & paired){
       
       message("\nNOTE: When using \"researcher.tool\" no effect size other than \"0\" could be used due to the Binomial data-generating processes in place." )
@@ -137,8 +133,7 @@ ttest = function(n1 = 5, n2 = 5,
       
       y = c(bi1, bi2)
     }
-    
-    
+       
     if(!paired) {
       
       groups = factor(rep(1:2, times = c(n1, n2)), labels = c("Treatment", "Control") )
@@ -146,16 +141,14 @@ ttest = function(n1 = 5, n2 = 5,
     } else { 
       
       groups = factor(rep(1:2, times = c(n1, n2)), labels = c("Post-Test", "Pre-Test") )
-    }
-    
+    }   
     
     mean.g1 = if(!paired)  mean(y[groups == "Treatment"])  else   mean(y[groups == "Post-Test"])  
     mean.g2 = if(!paired)  mean(y[groups == "Control"])    else   mean(y[groups == "Pre-Test"])    
     
     sd.g1 = if(!paired) sd(y[groups == "Treatment"]) else sd(y[groups == "Post-Test"])
     sd.g2 = if(!paired) sd(y[groups == "Control"])   else sd(y[groups == "Pre-Test"])
-    
-    
+        
     groups.for.t = factor( rep(1:2, times = c(n1, n2)) )
     
     test = t.test(y ~ groups.for.t, var.equal = TRUE, paired = ifelse(paired, TRUE, FALSE))
@@ -178,8 +171,7 @@ ttest = function(n1 = 5, n2 = 5,
       dotchart(y, groups = groups, color = c(4, 2)[groups], 
                font = 2, pch = 19, gcolor = c(4, 2), xlab = "Participants' Scores",
                pt.cex = ifelse(n1 <= 20 || n2 <= 20, 1.5, .8), labels = c(lab1, lab2), main = NA,
-               cex.main = 2)
-      
+               cex.main = 2)      
     } else {
       
       par(font.lab = 2, xaxt = "n", ...)
@@ -198,7 +190,6 @@ par(xaxt = "s") ; if(researcher.tool) axis(1, at = min(y):max(y), font = 2) else
               col = c(2, 4) )
     
     arrows(mean.g2, gpos[[2]], mean.g1, gpos[[2]], code = 3, length = .08, col = "darkgreen")
-    
     
     mean.diff = mean.g1 - mean.g2
     
@@ -222,17 +213,14 @@ par(xaxt = "s") ; if(researcher.tool) axis(1, at = min(y):max(y), font = 2) else
     
     invisible(list(Cohend = Cohend, mean.diff = mean.diff, t.value = t.value, TRUE.d = TRUE.d, p.value = p.value))
   }
-  
  
   if(simulation){
     
     if(missing(sim.time)) sim.time = .7
     
-    
        Cohend.sim = numeric(n.sim)
     mean.diff.sim = numeric(n.sim)
       t.value.sim = numeric(n.sim)
-    
     
     for(i in 1:n.sim){
       
@@ -243,7 +231,6 @@ par(xaxt = "s") ; if(researcher.tool) axis(1, at = min(y):max(y), font = 2) else
         t.value.sim[i] <- a$t.value
       
       Sys.sleep(sim.time)  
-      
     }
     
     cbind("TRUE.Cohen.d" = a$TRUE.d, "Cohen.d" = decimal(Cohend.sim, 2), "Mean.diff" = decimal(mean.diff.sim, 2), 
@@ -259,8 +246,7 @@ par(xaxt = "s") ; if(researcher.tool) axis(1, at = min(y):max(y), font = 2) else
     list(t.value = b$t.value, Cohend = b$Cohend, TRUE.Cohen.d = b$TRUE.d, p.value = b$p.value)
     }
 }
-
-
-ttest(n1 = 9, n2 = 9, sim.time = .7, min.score = 0, max.score = 25, 
+# Example of use:
+ttest(n1 = 30, n2 = 30, sim.time = .7, min.score = 0, max.score = 20, 
       simulation = FALSE, n.sim = 1, paired = FALSE,
-      researcher.tool = FALSE, effect.size = 0)
+      researcher.tool = TRUE, effect.size = 0)
