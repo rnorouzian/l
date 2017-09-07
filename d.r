@@ -121,7 +121,7 @@ plot.names = noquote(sprintf("p.b%d.%d", 1:7, rep(1:4, each = 7)))
 original_par = par(no.readonly = TRUE)
 on.exit(par(original_par))
 
-par(mfcol = c(7, 4), mar = rep(.08, 4), oma = rep(8, 4))
+par(mfcol = c(7, 4), mar = rep(.08, 4), oma = rep(9, 4))
 
 ## Multiple plotting:
 invisible(lapply(mget(plot.names), function(pb) 
