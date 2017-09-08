@@ -5,7 +5,7 @@ cuts = quantile(x, c(.025, .975))
    h = hist(cut, breaks = 80, plot = FALSE)
 cuts = cut(h$breaks, c(-1.2, .8))
 
-plot(h, col = rgb(0, 0, 1, .3)[cuts], axes = FALSE, ylab = NA, main = NA, xlab = "Alternative Effect Sizes", font.lab = 2)
+plot(h, col = rgb(0, 0, 1, .3)[cuts], axes = FALSE, ylab = NA, main = NA, xlab = "Alternative Effect Sizes (d)", font.lab = 2)
 
 axis(1, at = -9:9, font = 2, xpd = NA)
 abline(v = c(-1, 1), col = "red", lty = 2)
