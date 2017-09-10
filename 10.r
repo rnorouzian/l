@@ -17,9 +17,6 @@ exaggeration = if(d > 0) mean(abs(random.d)[sig])/ d else mean(-abs(random.d)[si
     list(exaggeration = exaggeration, type.s = type.s, power = power)
   }
   
-  original.par = par(no.readonly = TRUE)
-  on.exit(par(original.par))
-  
   par(mfrow = c(2, 1), mgp = c(2, .5, 0), mar = c(4, 4, 3, 2), las = 1)  
   
        d_range = seq(d.min, d.max, l = 1e3)
@@ -29,9 +26,9 @@ exaggeration = if(d > 0) mean(abs(random.d)[sig])/ d else mean(-abs(random.d)[si
   exaggeration = numeric(n)
   
   for(i in 1L:n){
-             a = type.s.m(d = d_range[i], n1 = n1, n2 = n2, alpha = alpha)
-      power[i] = a$power
-     type.s[i] = a$type.s
+              a = type.s.m(d = d_range[i], n1 = n1, n2 = n2, alpha = alpha)
+       power[i] = a$power
+      type.s[i] = a$type.s
 exaggeration[i] = a$exaggeration
   }
   
@@ -42,7 +39,6 @@ exaggeration[i] = a$exaggeration
   axis(1, at = c(alpha, seq(.2, 1, by = .2)))
   axis(2, at = seq(1, 10, by = 2))
   abline(h = 1, v = alpha, col = 8)
-  
 }
 # Example of use:
 type.s.mfun(n1 = 50, n2 = 50, alpha = .05)
