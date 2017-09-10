@@ -10,4 +10,4 @@ plot(h, col = rgb(0, 0, 1, .3)[cuts], axes = FALSE, ylab = NA, main = NA, xlab =
 axis(1, at = -9:9, font = 2, xpd = NA)
 abline(v = c(-1, 1), col = "red", lty = 2)
 arrows(.8, 3e3, 3, 3500, code = 2, length = .15, angle = 20, lwd = 2)
-text(6, 3700, "Concentration of Plausible \n Effect Sizes in L2 Research (d)", font = 2, xpf = NA)
+text(6, 3700, "Concentration of Plausible \n Effect Sizes in L2 Research (d)", font = 2, xpd = NA)
