@@ -1,8 +1,5 @@
 type.s.m = function(n1 = 20, n2 = NA, d = .1, obs.d = .6, alpha = .05){
   
-  original.par = par(no.readonly = TRUE)
-  on.exit(par(original.par))
-  
   par(mfrow = c(2, 1), mgp = c(2, .5, 0), mar = c(4, 4, 3, 2), xpd = TRUE)  
      if(abs(d) > .4) d = .4
      N = ifelse(is.na(n2), n1, (n1 * n2)/(n1 + n2))
