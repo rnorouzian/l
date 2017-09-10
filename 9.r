@@ -46,7 +46,6 @@ type.s.m = function(n1 = 20, n2 = NA, d = .1, obs.d = .6, alpha = .05){
   lines(`d|H1`, lwd = 2)
   text(d, max(`d|H1`$y)/2, paste0("True effect = ", d), font = 2, pos = 3, srt = 90, col = 4)
   
-  
   axis(1, at = d, col = 4, col.axis = 4, font = 2)
   points(obs.d, 0, pch = 23, bg = 3, cex = 1.4, xpd = TRUE)
   abline(v = d, col = 4, xpd = FALSE)
@@ -63,5 +62,5 @@ type.s.m = function(n1 = 20, n2 = NA, d = .1, obs.d = .6, alpha = .05){
 
   list(exaggration = exaggration, type.s = type.s, power = power, Crit.d = CI[2], p.value = p.value)
 }
-
+# Example of use:
 type.s.m(n1 = 20, d = .1, obs.d = .5, alpha = .05)
