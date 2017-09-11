@@ -6,7 +6,7 @@ min.d = d.SE*qt(1e-5, df, ncp.min)  ;  max.d = d.SE*qt(0.99999, df, ncp.max)
   
 for(i in 1:length(d)){      
 H = curve(dt(d[i]*sqrt(N), df, x*sqrt(N)), min.d, max.d, n = 1e3, xlab = "Effect Size (Cohen's d)", 
-          ylab = NA, ty = "n", add = i!= 1, bty = "n", yaxt = "n", font.lab = 2)
+          ylab = NA, ty = "n", add = i!= 1, bty = "n", yaxt = "n", font.lab = 2, yaxs = "i")
       
 polygon(H, col = adjustcolor(i, .7), border = NA)
 text(d[i], max(H$y), bquote(bolditalic(H[.(i-1)])), pos = 3, xpd = NA)
