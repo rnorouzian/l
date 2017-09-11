@@ -16,11 +16,9 @@ non.sig.pvalues = unname(table(p.value <= .05)["FALSE"]))
 
 ## Main Analysis:
 b = BF.d.pvalue(t = t.value, n1 = n1, n2 = n2)
-
 BF = b[1, ]  ;  p.value = b[2, ]   ;  d = b[3, ] ; n1 = b[6, ]  ; n2 = b[7, ] ; t = b[8, ]
 
 all.data = data.frame(p = p.value, BF = BF, d = d, n1 = n1, n2 = n2, t = t)
-
 pval.bf = data.frame(p = p.value, BF = BF)
 d.bf = data.frame(BF = BF, d = d)  
 pval.d = data.frame(p = p.value, d = d)
@@ -46,7 +44,6 @@ h = hist(sig.p, xlab = bquote(bolditalic("p")*bold("-value")), font.lab = 2, mai
 rect(0, 0, .005, max(h$counts), col = rgb(0, 0, 1, .4), border = 2)
 axis(1, at = .005, lab = ".005", col = 2, col.axis = 2, font = 2)
 axis(2, at = c(seq(0, 100, l = 3), max(h$counts)))
-  
 cat("Percentage of sig. p to all ps = ", length(sig.p)/length(all.data$p)*1e2, "%", "\n\tSig Ps that remain sig after .005 =",(nrow(subset(all.data, p < .05))-nrow(subset(all.data, p < .005)) )/nrow(subset(all.data, p < .05))*1e2,'%')
  } 
 
