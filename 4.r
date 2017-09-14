@@ -1,13 +1,13 @@
-  set.seed(0)
-   x = rcauchy(5e4, 0, sqrt(2)/2)
-cuts = quantile(x, c(.025, .975))
- cut = x[x >= cuts[1] & x <= cuts[2]]
-   h = hist(cut, breaks = 80, plot = FALSE)
-cuts = cut(h$breaks, c(-1.2, .8))
+H = curve(dcauchy(x, 0, sqrt(2)/2), -6, 6, n = 1e4, yaxt = "n", ty = "n", yaxs = "i",
+          bty = "n", ylab = NA, xlab = "Effect Sizes (d)", font.lab = 2)
 
-plot(h, col = rgb(0, 0, 1, .3)[cuts], axes = FALSE, ylab = NA, main = NA, xlab = "Alternative Effect Sizes (d)", font.lab = 2)
+x = seq(-1, 1, l = 1e4)
+y = dcauchy(x, 0, sqrt(2)/2)
 
-axis(1, at = -9:9, font = 2, xpd = NA)
-abline(v = c(-1, 1), col = "red", lty = 2)
-arrows(.8, 3e3, 3, 3500, code = 2, length = .15, angle = 20, lwd = 2)
-text(6, 3700, "Concentration of Plausible \n Effect Sizes in L2 Research (d)", font = 2, xpd = NA)
+polygon(c(-1, x, 1), c(0, y, 0), col = adjustcolor(2, .5), border = NA)
+lines(H, lwd = 2)
+segments(c(-1, 0, 1), rep(0, 3), x <- c(-1, 0, 1), dcauchy(x, 0, sqrt(2)/2), lty = 3, col = 4)
+axis(1, at = c(-1, 1), col.ticks = 2, col.axis = 2, font = 2)
+arrows(.3, max(H$y)/2, 2, max(H$y)/1.3, code = 2)
+points(.3, max(H$y)/2, pch = 19, cex = .9)
+text(2, max(H$y)/1.3, "Concentration of \nfrequently found\n effect sizes in L2\n Research", pos = 3, font = 2)
