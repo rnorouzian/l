@@ -4,7 +4,7 @@ H = curve(dcauchy(x, 0, sqrt(2)/2), -6, 6, n = 1e4, yaxt = "n", ty = "n", yaxs =
 x = seq(-1, 1, l = 1e4)
 y = dcauchy(x, 0, sqrt(2)/2)
 
-polygon(c(-1, x, 1), c(0, y, 0), col = adjustcolor("gold", .8), border = NA)
+polygon(c(-1, x, 1), c(0, y, 0), col = "gold", border = NA)
 lines(H, lwd = 2)
 segments(c(-1, 0, 1), rep(0, 3), x <- c(-1, 0, 1), dcauchy(x, 0, sqrt(2)/2), lty = 3, col = 4)
 axis(1, at = c(-1, 1), col.ticks = 2, col.axis = 2, font = 2)
