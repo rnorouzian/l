@@ -4,8 +4,7 @@ hyp.test = function(N = 30, obs.d = .1){
 min.d = qt(1e-6, df)*d.SE  ;  max.d = qt(0.999999, df)*d.SE
 
 `d|H0` = curve(dt(x/d.SE, df)/d.SE, min.d, max.d, n = 1e4, xlab = "Effect Size (d)", 
-               ylab = NA, font.lab = 2, ty = "n", axes = FALSE, bty = "n",
-               cex.axis = 1, cex.lab = 1, yaxs = "i")
+               ylab = NA, font.lab = 2, ty = "n", axes = FALSE, bty = "n", yaxs = "i")
   
   polygon(`d|H0`, col = 8, border = 8)  ;  axis(1)
   
