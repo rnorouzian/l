@@ -26,16 +26,3 @@ decimal <- function(x, k){
   format(round(x, k), nsmall = k, scientific = 
          ifelse(x >= 1e5 || x <= -1e5 || x <= 1e-5 & x >= -1e-5, TRUE, FALSE) )
 }
-
-
-vec.nrow = Vectorize(function(x)nrow(x), "x")
-
-vec.ncol = Vectorize(function(x)ncol(x), "x")
-
-vec.length = Vectorize(function(x)length(x), "x")
-
-vec.max = Vectorize(function(x)max(x), "x")
-
-vec.min = Vectorize(function(x)min(x), "x")
-
-vec.rt = Vectorize(function(n, df, ncp)rt(n, df, ncp), vectorize.args = c("n", "df", "ncp"))
