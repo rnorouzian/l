@@ -1,4 +1,4 @@
-hyp.test = function(N = 30, obs.d = .1){
+Figure.1 = function(N = 30, obs.d = .1){
   
   options(warn = -1)  ;  df = N - 1  ;  d.SE = 1/sqrt(N)
 min.d = qt(1e-6, df)*d.SE  ;  max.d = qt(0.999999, df)*d.SE
@@ -22,9 +22,9 @@ min.d = qt(1e-6, df)*d.SE  ;  max.d = qt(0.999999, df)*d.SE
   points(obs.d, 0, pch = 23, bg = 3, cex = 1.4, xpd = TRUE)
   legend("topleft", "Obtained Effect Size (d)", pch = 23, pt.bg = 3, pt.cex = 1.2, bty = "n", text.font = 2)   
   
-  arrows((obs.d+max.d)/3, dt(((obs.d+max.d)/3)/d.SE , df)/d.SE, arrow, max(`d|H0`$y)/2, code = 1, length = .1, angle = 20, lwd = 2)
-  arrows((-obs.d+min.d)/3, dt(((-obs.d+min.d)/3)/d.SE , df)/d.SE, arrow, max(`d|H0`$y)/2, code = 1, length = .1, angle = 20, lwd = 2)
+  arrows((obs.d + max.d)/3, dt(((obs.d + max.d)/3)/d.SE , df)/d.SE, arrow, max(`d|H0`$y)/2, code = 1, length = .1, angle = 20, lwd = 2)
+  arrows((-obs.d + min.d)/3, dt(((-obs.d+min.d)/3)/d.SE , df)/d.SE, arrow, max(`d|H0`$y)/2, code = 1, length = .1, angle = 20, lwd = 2)
   text(arrow, max(`d|H0`$y)/2, bquote(bold("p-value" == .(p.value))), font = 2, pos = 3)
 }
 #Example of use:
-hyp.test(N = 30, obs.d = .3)
+Figure.1(N = 30, obs.d = .3)
