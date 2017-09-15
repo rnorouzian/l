@@ -1,4 +1,4 @@
-alt.hyp = function(N, d){
+Figure.2 = function(N, d){
   
   options(warn = -1) ; d = sort(d)
   df = N - 1  ;  d.SE = 1/sqrt(N)  ;  ncp.min = min(d)*sqrt(N)  ;  ncp.max = max(d)*sqrt(N)
@@ -15,4 +15,4 @@ alt.hyp = function(N, d){
   }
 }
 # Example of use:
-alt.hyp(N = 30, d = seq(0, 2, .5))
+Figure.2(N = 30, d = seq(0, 2, .5))
