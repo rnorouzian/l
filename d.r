@@ -9,9 +9,7 @@ pre_analysis = function(){
 list(Data.size = Data.size,
 paired.samples = sum(t.type == 0)-3,
 one.sample = 3,
-independent.samples = sum(t.type == 1),
-sig.pvalues = unname(table(p.value <= .05)["TRUE"]),
-non.sig.pvalues = unname(table(p.value <= .05)["FALSE"])) 
+independent.samples = sum(t.type == 1))
 }
 
 ## Main Analysis:
