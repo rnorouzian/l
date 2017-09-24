@@ -13,7 +13,7 @@ p.value = 2*(1-pt(t, df))
   
 cbind(BF10 = BF10, p.value = p.value, d = d, H0 = H0, H1 = H1, n1 = n1, n2 = n2, t = t)
   
-}, vectorize.args = c("t", "n1", "n2", "scale", "log.BF"))
+}, c("t", "n1", "n2", "scale", "log.BF"))
 
 
 
