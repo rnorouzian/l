@@ -141,8 +141,8 @@ mid.y = seq(grconvertY(0 + (1 / 14), "nic"), grconvertY(1 - (1 / 14), "nic"), l 
 gap.x = sort(c(mid.x[-length(mid.x)] + diff(mid.x)[1L] / 2, grconvertX(0:1, "nic")))
 gap.y = sort(c(mid.y[-length(mid.y)] + diff(mid.y)[1L] / 2, grconvertY(0:1, "nic")))
 
-xlim = c( grconvertX(0, "nic"), grconvertX(1, "nic") )
-ylim = c( grconvertY(0, "nic"), grconvertY(1, "nic") )
+xlim = grconvertX(0:1, "nic")
+ylim = grconvertY(0:1, "nic")
 
 arrows(rep(gap.x[1]-.57, 2), c(mid.y[3], mid.y[2]), rep(gap.x[1]-.57, 2), c(mid.y[4], mid.y[1]), code = 2, length = .075, angle = 20)
 
