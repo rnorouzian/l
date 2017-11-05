@@ -109,6 +109,7 @@ bf.marginal = matrix(c(bf.Decisive, bf.very.strong, bf.strong, bf.substan.H1,
                        bf.Anecd.H1, bf.Anecd.H0, bf.substan.H0, bf.cat.check), ncol = 1)
 
 X.sq = chisq.test(result, correct = FALSE)
+CramerV = unname(X.sq[[1]]) / (Data.size * 3)
 
 chisq.table = cbind(rbind(result, p.marginal), bf.marginal)
 dimnames(chisq.table) = list(BF = c("Decisive", "Very Strong", "Strong", "Substantial", "Anecdotal", "Anecdotal(H0)", "Substantial(H0)", "Marginal.p")
@@ -173,7 +174,7 @@ text(mean(gap.x), ylim[2] + .16, bquote(bold("Evidence against"~bolditalic(H)[0]
  
 tt = subset(pval.bf, (p > .01 & p <= .05))
 
-list(chisq.table = chisq.table, X.sq = X.sq, "p.values(.01-.05)_BFs(Anecdotal[H1]):" = 
+list(chisq.table = chisq.table, X.sq = X.sq, CramerV = CramerV, "p.values(.01-.05)_BFs(Anecdotal[H1]):" = 
 paste0(round(length(which(tt$BF <= 3 & tt$BF >= 1)) / nrow(tt)*1e2, 2), "%"), "p.values(.01-.05)_BFs(Anecdotal[H0]):" = 
 paste0(round(length(which(tt$BF >= 1/3 & tt$BF <= 1)) / nrow(tt)*1e2, 2), "%"))
 }
