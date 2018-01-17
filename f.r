@@ -1,4 +1,4 @@
-BF.d.pvalue = Vectorize(function(t, n1, n2 = NA, scale = 1, log.BF = FALSE){
+BF.d.pvalue = Vectorize(function(t, n1, n2 = NA, scale = sqrt(2)/2, log.BF = FALSE){
   
    options(warn = -1)  
       t = abs(t)
@@ -13,7 +13,7 @@ p.value = 2*(1-pt(t, df))
   
 cbind(BF10 = BF10, p.value = p.value, d = d, H0 = H0, H1 = H1, n1 = n1, n2 = n2, t = t)
   
-}, c("t", "n1", "n2", "scale", "log.BF"))
+})
 
 
 
