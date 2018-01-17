@@ -1,4 +1,4 @@
-BF.d.pvalue = Vectorize(function(t, n1, n2 = NA, scale = sqrt(2)/2, log.BF = FALSE){
+BF.d.pvalue = Vectorize(function(t, n1, n2 = NA, scale = 1, log.BF = FALSE){
   
    options(warn = -1)  
       t = abs(t)
