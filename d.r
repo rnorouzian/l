@@ -13,7 +13,7 @@ independent.samples = sum(t.type == 1))
 }
 
 ## Main Analysis:
-b = BF.d.pvalue(t = t.value, n1 = n1, n2 = n2, scale = 1)
+b = BF.d.pvalue(t = t.value, n1 = n1, n2 = n2, scale = sqrt(2)/2)
 BF = b[1, ]  ;  p.value = b[2, ]   ;  d = b[3, ] ; n1 = b[6, ]  ; n2 = b[7, ] ; t = b[8, ]
 
 all.data = data.frame(p = p.value, BF = BF, d = d, n1 = n1, n2 = n2, t = t)
