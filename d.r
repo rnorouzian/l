@@ -23,6 +23,8 @@ pval.d = data.frame(p = p.value, d = d)
 
 ## all p.values distribution
 p.dist = function(){
+
+graphics.off()  
 original_par = par(no.readonly = TRUE)
 on.exit(par(original_par))  
 par(mgp = c(2.5, .6, 0), las = 1, yaxt = "n", mgp = c(2.5, .6, 0))  
@@ -34,6 +36,8 @@ axis(2, at = c(seq(0, 2e2, l = 5), max(h$counts)))
 
 ## Significant p.values distribution
 p.sig.dist = function(){
+  
+graphics.off()  
 original_par = par(no.readonly = TRUE)
 on.exit(par(original_par))  
 par(mgp = c(2.5, .75, 0), las = 1)      
@@ -119,6 +123,7 @@ dimnames(chisq.table) = list(BF = c("Decisive", "Very Strong", "Strong", "Substa
 plot.names = noquote(sprintf("p.b%d.%d", 1:7, rep(1:4, each = 7)))
 
 # Ready the device:
+graphics.off()
 original_par = par(no.readonly = TRUE)
 on.exit(par(original_par))
 
