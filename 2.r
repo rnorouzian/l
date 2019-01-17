@@ -6,7 +6,7 @@ Figure.2 = function(N, d){
   min.d = qcohen(1e-5, min(d), N)  ;  max.d = qcohen(.99999, max(d), N)  
   
   for(i in 1:length(d)){      
-    H = curve(dcohen(x, d[i], N), min.d, max.d, n = 1e3, xlab = "Effect Size (d)", 
+    H = curve(dcohen(x, d[i], N), min.d, max.d, n = 1e3, xlab = "Effect Size (d)", xaxt = "n",
               ylab = NA, type = "n", add = i!= 1, bty = "n", yaxt = "n", font.lab = 2, yaxs = "i")
     
     polygon(H, col = adjustcolor(i, .7), border = NA)
