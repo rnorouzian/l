@@ -1,12 +1,13 @@
+source("https://raw.githubusercontent.com/rnorouzian/i/master/i.r")
+
 Figure.2 = function(N, d){
   
   options(warn = -1) ; d = sort(d)
-  df = N - 1  ;  d.SE = 1/sqrt(N)  ;  ncp.min = min(d)*sqrt(N)  ;  ncp.max = max(d)*sqrt(N)
-  min.d = d.SE*qt(1e-5, df, ncp.min)  ;  max.d = d.SE*qt(0.99999, df, ncp.max)  
+  min.d = qcohen(1e-5, min(d), N)  ;  max.d = qcohen(.99999, max(d), N)  
   
   for(i in 1:length(d)){      
-    H = curve(dt(x*sqrt(N), df, d[i]*sqrt(N)), min.d, max.d, n = 1e3, xlab = "Effect Size (Cohen's d)", 
-              ylab = NA, ty = "n", add = i!= 1, bty = "n", yaxt = "n", font.lab = 2, yaxs = "i")
+    H = curve(dcohen(x, d[i], N), min.d, max.d, n = 1e3, xlab = "Effect Size (d)", 
+              ylab = NA, type = "n", add = i!= 1, bty = "n", yaxt = "n", font.lab = 2, yaxs = "i")
     
     polygon(H, col = adjustcolor(i, .7), border = NA)
     text(d[i], max(H$y), bquote(bolditalic(H[.(i-1)])), pos = 3, xpd = NA)
