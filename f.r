@@ -18,7 +18,8 @@ message(Break, notice, Break)
 Break = "\n*****************************************************************************\n"
 
 cite = "To cite the package use:\n\nNorouzian, R., de Miranda, M. A., & Plonsky, L. (2018). The Bayesian \nrevolution in second language research: An applied approach. Language Learning, 64, 1032-1075.
-\nNorouzian, R., de Miranda, M. A., & Plonsky, L. (2019). A Bayesian approach to measuring evidence \nin L2 research: An empirical investigation. Modern Language Journal, 103, 248-263."
+\nNorouzian, R., de Miranda, M. A., & Plonsky, L. (2019). A Bayesian approach to measuring evidence \nin L2 research: An empirical investigation. Modern Language Journal, 103, 248-263.
+\nNorouzian, R. (2018). Methodological Reform in Quantitative Second Language Research: Effect Sizes, \nBayesian Hypothesis Testing, and Bayesian Estimation of Effect Sizes. Unpublished doctoral dissertation. \nTexas A&M University, College Station, TX, USA."
 
 cat(Break, cite, Break)
 
